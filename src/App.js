@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Categories from './categories/categories';
+import Product from './product/product';
+import { useSelector } from 'react-redux';
+import { selectCategoryId } from './redux/slices/categoriesSlice';
 
-function App() {
+const App = () => {
+  const categoryId = useSelector(selectCategoryId);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Categories />
+      <Product categoryId={categoryId} />
     </div>
   );
-}
+};
 
 export default App;
